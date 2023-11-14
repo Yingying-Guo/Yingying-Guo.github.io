@@ -56,6 +56,16 @@
           <a class="main-nav-link" href="/archives">Archives</a>
         
       </nav>
+      <div class="algolia-search-wrapper">
+        <form id="algolia-search-form">
+          <input 
+            type="search" 
+            id="algolia-search-input"
+            class="search-input"
+            placeholder="Search..."/>
+        </form>
+        <span class="icon-search"></span>
+      </div>
       <nav id="sub-nav">
         
         
@@ -68,6 +78,20 @@
       </div>
     </div>
   </div>
+  <script>
+    var client = algoliasearch("yourApplicationId", "yourSearchKey"); 
+    var index = client.initIndex("yourIndexName");
+    var search = instantsearch({
+      index: index,
+      searchClient: client
+    });
+    
+    search.addWidget(
+      instantsearch.widgets.searchBox({
+        container: '#algolia-search-input'
+      })
+    );
+  </script>
 </header>
 
       <div class="outer">
