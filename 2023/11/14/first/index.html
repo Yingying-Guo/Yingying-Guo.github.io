@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<!-- 引入 Algolia InstantSearch 库 -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4"></script>
+<!-- 其他可能的 head 元素 -->
 <head>
   <meta charset="utf-8">
   
@@ -71,7 +74,7 @@
       </div>
     </div>
   </div>
-  <div class="algolia-search-wrapper">
+  <!-- <div class="algolia-search-wrapper">
     <form id="algolia-search-form">
       <input 
         type="search" 
@@ -94,7 +97,10 @@
         container: '#algolia-search-input'
       })
     );
-  </script>
+  </script> -->
+  <div id="search-box"></div>
+
+  <div id="hits"></div>
 </header>
 
       <div class="outer">
@@ -124,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/11/14/first/" data-id="cloy2vg9200004okm1hj90xvt" data-title="First Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      <a data-url="http://example.com/2023/11/14/first/" data-id="clozi4lap000020km8jtp7kb8" data-title="First Blog" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
       
       
@@ -258,5 +264,29 @@
 
 
   </div>
+  <!-- Algolia InstantSearch 配置脚本 -->
+  <script>
+    const search = instantsearch({
+      appId: 'W5LWOMXXVV',
+      apiKey: '03c06f8d743547c99ddb5736cd5cfa1a',
+      indexName: 'StudyBlog'
+    });
+    
+    search.addWidget(
+      instantsearch.widgets.searchBox({
+        container: '#search-box' 
+      })
+    );
+    
+    search.addWidget(
+       instantsearch.widgets.hits({
+        container: '#hits'
+      })
+    );
+    
+    search.start();
+  </script>
+
 </body>
+
 </html>
